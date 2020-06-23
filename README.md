@@ -1,15 +1,5 @@
-# georgebarwood.github.io
-
-<h1>Manual</h1>
-<p>This manual describes the various SQL statements that are available. Where syntax is described, optional elements are enclosed in square brackets.
-<h2>Schema definition</h2>
-<h3>CREATE SCHEMA</h3>
-
-<p>CREATE SCHEMA name
-   <p>Creates a new schema. Every database object (Table,View,Procedure,Function) has an associated schema. Schemas are used to organise database objects into logical categories.<h2>Table definition</h2>
-   <h3>CREATE TABLE</h3>
-   <p>CREATE TABLE schema.tablename ( Colname1 Coltype1, Colname2 Coltype2, ... )<p>Creates a new base table. Every base table is automatically given an Id column, which auto-increments on INSERT ( if no explicit value is supplied).<p>The data types are as follows:
-<ul>
+<h1>Manual</h1><p>This manual describes the various SQL statements that are available. Where syntax is described, optional elements are enclosed in square brackets.<h2>Schema definition</h2><h3>CREATE SCHEMA</h2><p>CREATE SCHEMA name
+   <p>Creates a new schema. Every database object (Table,View,Procedure,Function) has an associated schema. Schemas are used to organise database objects into logical categories.<h2>Table definition</h2><h3>CREATE TABLE</h2><p>CREATE TABLE schema.tablename ( Colname1 Coltype1, Colname2 Coltype2, ... )<p>Creates a new base table. Every base table is automatically given an Id column, which auto-increments on INSERT ( if no explicit value is supplied).<p>The data types are as follows:<ul>
 <li>tinyint, smallint, int, bigint : signed integers of size 1, 2, 4 and 8 bytes respectively.
 <li>float, double : floating point numbers of size 4 and 8 bytes respectively.
 <li>decimal(p,s) : a number with p decimal digits, with s digits after the decimal point. The maximum value of p is 18.
@@ -18,15 +8,12 @@
 <li>bool : boolean ( true or false ).
 </ul>
 
-<p>Each data type has a default value : zero for numbers, a zero length string for string and binary, and false for the boolean type. The variable length data types are stored in special system tables, and are automatically encoded so that only one copy of a given string or binary value is stored.<h3>ALTER TABLE</h2><p>ALTER TABLE schema.tablename action1, action2 .... <p>The actions are as follows:
-<ul>
+<p>Each data type has a default value : zero for numbers, a zero length string for string and binary, and false for the boolean type. The variable length data types are stored in special system tables, and are automatically encoded so that only one copy of a given string or binary value is stored.<h3>ALTER TABLE</h2><p>ALTER TABLE schema.tablename action1, action2 .... <p>The actions are as follows:<ul>
 <li>ADD Colname Coltype : a new column is added to the table.
 <li>RENAME Colname TO NewColname : the column is renamed.
 <li>MODIFY Colname Coltype : the datatype of an existing column is changed. The only changes allowed are between the different sizes of integers, between float and double, and decimals with the same scale.
 <li>DROP Colname : the column is removed from the table.
-</ul>
-<h2>Data manipulation statements</h2>
-<h3>INSERT</h3><p>INSERT INTO schema.tablename ( Colname1, Colname2 ... ) VALUES ( Val1, Val2... ) [,] ( Val3, Val4 ...) ...
+</ul><h2>Data manipulation statements</h2><h3>INSERT</h3><p>INSERT INTO schema.tablename ( Colname1, Colname2 ... ) VALUES ( Val1, Val2... ) [,] ( Val3, Val4 ...) ...
    <p>The specified values are inserted into the table. The values may be any expressions ( possibly involving local variables or function calls ).
 
    <p>INSERT INTO schema.tablename ( Colname1, Colname2 ... ) select-expression
@@ -104,4 +91,4 @@
    <h3>web</h3><p>Has the procedure that handles web requests ( web.main ) and other functions related to handling web requests.
    <h3>handler</h3>Has handler procedures, one for each web page.
    <h3>htm</h3><p>Has functions related to encoding html.
-   <h3>browse</h3><p>Has tables and functions for displaying, editing arbitrary tables in the database.</body></html>
+   <h3>browse</h3><p>Has tables and functions for displaying, editing arbitrary tables in the database.
