@@ -6,20 +6,21 @@
 <p>Creates a new schema. Every database object (Table,View,Procedure,Function) has an associated schema. Schemas are used to organise database objects into logical categories.<h2>Table definition</h2><h3>CREATE TABLE</h3><p>CREATE TABLE schema.tablename ( Colname1 Coltype1, Colname2 Coltype2, ... )
 <p>Creates a new base table. Every base table is automatically given an Id column, which auto-increments on INSERT ( if no explicit value is supplied).<p>The data types are as follows:
 <ul>
-<li>tinyint, smallint, int, bigint : signed integers of size 1, 2, 4 and 8 bytes respectively.
-<li>float, double : floating point numbers of size 4 and 8 bytes respectively.
-<li>decimal(p,s) : a number with p decimal digits, with s digits after the decimal point. The maximum value of p is 18.
-<li>string : a string of unicode characters.
-<li>binary : a string of bytes.
-<li>bool : boolean ( true or false ).
+<li>tinyint, smallint, int, bigint : signed integers of size 1, 2, 4 and 8 bytes respectively.</li>
+<li>float, double : floating point numbers of size 4 and 8 bytes respectively.</li>
+<li>decimal(p,s) : a number with p decimal digits, with s digits after the decimal point. The maximum value of p is 18.</li>
+<li>string : a string of unicode characters.</li>
+<li>binary : a string of bytes.</li>
+<li>bool : boolean ( true or false ).</li>
 </ul>
 
 <p>Each data type has a default value : zero for numbers, a zero length string for string and binary, and false for the boolean type. The variable length data types are stored in special system tables, and are automatically encoded so that only one copy of a given string or binary value is stored.<h3>ALTER TABLE</h3>
-<p>ALTER TABLE schema.tablename action1, action2 .... <p>The actions are as follows:<ul>
-<li>ADD Colname Coltype : a new column is added to the table.
-<li>RENAME Colname TO NewColname : the column is renamed.
-<li>MODIFY Colname Coltype : the datatype of an existing column is changed. The only changes allowed are between the different sizes of integers, between float and double, and decimals with the same scale.
-<li>DROP Colname : the column is removed from the table.
+<p>ALTER TABLE schema.tablename action1, action2 .... <p>The actions are as follows:
+<ul>
+<li>ADD Colname Coltype : a new column is added to the table.</li>
+<li>RENAME Colname TO NewColname : the column is renamed.</li>
+<li>MODIFY Colname Coltype : the datatype of an existing column is changed. The only changes allowed are between the different sizes of integers, between float and double, and decimals with the same scale.</li>
+<li>DROP Colname : the column is removed from the table.</li>
 </ul>
 
 <h2>Data manipulation statements</h2>
@@ -60,29 +61,31 @@
 <h3>Operators</h3>
 <p>The operators ( all binary, except for - which can be unary, and NOT which is only unary ) in order of precedence, high to low, are as follows:
 <ul>
-<li>*  / % : multiplication, division and remainder (after division) of numbers. Remainder only applies to integers.
-<li>+ - : addition, subtraction of numbers.
-<li>| : concatenation of strings. The second expression is automatically converted to string if necessary.
-<li>= != > < >= <= : comparison of any data type.
-<li>IN : tests whether an expression in is in a set. The set may be a list of expressions or a select expression enclosed in brackets.
-<li>NOT : boolean negation ( result is true if arg is false, false if arg is true ).
-<li>AND : boolean operator ( result is true if both args are true )
-<li>OR : boolean operator  ( result is true if either arg is true )
+<li>*  / % : multiplication, division and remainder (after division) of numbers. Remainder only applies to integers.</li>
+<li>+ - : addition, subtraction of numbers.</li>
+<li>| : concatenation of strings. The second expression is automatically converted to string if necessary.</li>
+<li>= != > < >= <= : comparison of any data type.</li>
+<li>IN : tests whether an expression in is in a set. The set may be a list of expressions or a select expression enclosed in brackets.</li>
+<li>NOT : boolean negation ( result is true if arg is false, false if arg is true ).</li>
+<li>AND : boolean operator ( result is true if both args are true )</li>
+<li>OR : boolean operator  ( result is true if either arg is true )</li>
 </ul>
 <p>Brackets can be used where necessary, for example ( a + b ) * c.
 <h3>Pre-defined functions</h3>
 <ul>
 <li>MIN,MAX,SUM,COUNT : these are used in conjunction with GROUP BY to calculate the associated aggregate values. Only aggregates can appear in the SELECT expressions when GROUP BY is used, and if any aggregate function is used, all the expressions must be aggregates. The GROUP BY expressions are included in the result table ( and may be given names using AS ).
-<li>LEN( s string ) : returns the length of s, which must be a string or binary expression.
-<li>SUBSTRING( s string, start int, len int ) : returns the substring of s from start (1-based) length len.
-<li>REPLACE( s string, pat string, sub string ) : returns a copy of s where every occurrence of pat is replaced with sub.
-<li>LASTID() : returns the last Id value allocated by an INSERT statement.
-<li>PARSEINT( s string ) : parses an integer from s.
-<li>PARSEFLOAT( s string ) : parses a floating point number from s.
-<li>PARSEDECIMAL( s string, scale int ) : parses a decimal number from s with the specified scale. The result should be assigned to a decimal variable or table column of matching scale.
-<li>EXCEPTION() returns a string with any error that occurred during an EXECUTE statement.
-<li>See the web schema for functions that can be used to access http requests.
-</ul><h3>Conversions</h3><p>Any type will implicitly convert to string where required. Integers will convert to float and decimal numbers, and float and decimal will convert to each other as required. ToDo: what about conversions to integer? Truncation vs Rounding etc.<h2>Views</h2><h3>CREATE VIEW</h3><p>CREATE VIEW schema.viewname AS SELECT expressions FROM table [WHERE bool-exp ] [GROUP BY expressions]<p>Creates a new view. Every expression must have a unique name.<h2>Indexes<h3>CREATE INDEX</h3><p>CREATE INDEX indexname ON schema.tablename( Colname1, Colname2 ... )<p>Creates a new index. Indexes allow efficient access to rows other than by Id values. 
+<li>LEN( s string ) : returns the length of s, which must be a string or binary expression.</li>
+<li>SUBSTRING( s string, start int, len int ) : returns the substring of s from start (1-based) length len.</li>
+<li>REPLACE( s string, pat string, sub string ) : returns a copy of s where every occurrence of pat is replaced with sub.</li>
+<li>LASTID() : returns the last Id value allocated by an INSERT statement.</li>
+<li>PARSEINT( s string ) : parses an integer from s.</li>
+<li>PARSEFLOAT( s string ) : parses a floating point number from s.</li>
+<li>PARSEDECIMAL( s string, scale int ) : parses a decimal number from s with the specified scale. The result should be assigned to a decimal variable or table column of matching scale.</li>
+<li>EXCEPTION() returns a string with any error that occurred during an EXECUTE statement.</li>
+<li>See the web schema for functions that can be used to access http requests.</li>
+</ul>
+<h3>Conversions</h3>
+<p>Any type will implicitly convert to string where required. Integers will convert to float and decimal numbers, and float and decimal will convert to each other as required. ToDo: what about conversions to integer? Truncation vs Rounding etc.<h2>Views</h2><h3>CREATE VIEW</h3><p>CREATE VIEW schema.viewname AS SELECT expressions FROM table [WHERE bool-exp ] [GROUP BY expressions]<p>Creates a new view. Every expression must have a unique name.<h2>Indexes<h3>CREATE INDEX</h3><p>CREATE INDEX indexname ON schema.tablename( Colname1, Colname2 ... )<p>Creates a new index. Indexes allow efficient access to rows other than by Id values. 
 <p>For example, <br>CREATE INDEX ByCust ON dbo.Order(Cust) 
 <br>creates an index allowing the orders associated with a particular customer to be efficiently retrieved without scanning the entire order table.<h2>Rename and Drop</h2><h3>RENAME</h3><p>RENAME object-type object-name TO object-name
 <p>object-type can be any one of SCHEMA,TABLE,VIEW,PROCEDURE or FUNCTION. The name of the specified object is changed.<h3>DROP object-type object-name</h3><p>object-type can be any one of SCHEMA,TABLE,VIEW,PROCEDURE or FUNCTION.
