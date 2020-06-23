@@ -73,7 +73,7 @@
 <p>Brackets can be used where necessary, for example ( a + b ) * c.
 <h3>Pre-defined functions</h3>
 <ul>
-<li>MIN,MAX,SUM,COUNT : these are used in conjunction with GROUP BY to calculate the associated aggregate values. Only aggregates can appear in the SELECT expressions when GROUP BY is used, and if any aggregate function is used, all the expressions must be aggregates. The GROUP BY expressions are included in the result table ( and may be given names using AS ).
+<li>MIN,MAX,SUM,COUNT : these are used in conjunction with GROUP BY to calculate the associated aggregate values. Only aggregates can appear in the SELECT expressions when GROUP BY is used, and if any aggregate function is used, all the expressions must be aggregates. The GROUP BY expressions are included in the result table ( and may be given names using AS ).</li>
 <li>LEN( s string ) : returns the length of s, which must be a string or binary expression.</li>
 <li>SUBSTRING( s string, start int, len int ) : returns the substring of s from start (1-based) length len.</li>
 <li>REPLACE( s string, pat string, sub string ) : returns a copy of s where every occurrence of pat is replaced with sub.</li>
