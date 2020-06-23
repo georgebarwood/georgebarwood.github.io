@@ -6,7 +6,9 @@
 <h3>CREATE SCHEMA</h3>
 
 <p>CREATE SCHEMA name
-   <p>Creates a new schema. Every database object (Table,View,Procedure,Function) has an associated schema. Schemas are used to organise database objects into logical categories.<h2>Table definition</h2><h3>CREATE TABLE</h2><p>CREATE TABLE schema.tablename ( Colname1 Coltype1, Colname2 Coltype2, ... )<p>Creates a new base table. Every base table is automatically given an Id column, which auto-increments on INSERT ( if no explicit value is supplied).<p>The data types are as follows:
+   <p>Creates a new schema. Every database object (Table,View,Procedure,Function) has an associated schema. Schemas are used to organise database objects into logical categories.<h2>Table definition</h2>
+   <h3>CREATE TABLE</h3>
+   <p>CREATE TABLE schema.tablename ( Colname1 Coltype1, Colname2 Coltype2, ... )<p>Creates a new base table. Every base table is automatically given an Id column, which auto-increments on INSERT ( if no explicit value is supplied).<p>The data types are as follows:
 <ul>
 <li>tinyint, smallint, int, bigint : signed integers of size 1, 2, 4 and 8 bytes respectively.
 <li>float, double : floating point numbers of size 4 and 8 bytes respectively.
@@ -23,7 +25,8 @@
 <li>MODIFY Colname Coltype : the datatype of an existing column is changed. The only changes allowed are between the different sizes of integers, between float and double, and decimals with the same scale.
 <li>DROP Colname : the column is removed from the table.
 </ul>
-<h2>Data manipulation statements</h2><h3>INSERT</h3><p>INSERT INTO schema.tablename ( Colname1, Colname2 ... ) VALUES ( Val1, Val2... ) [,] ( Val3, Val4 ...) ...
+<h2>Data manipulation statements</h2>
+<h3>INSERT</h3><p>INSERT INTO schema.tablename ( Colname1, Colname2 ... ) VALUES ( Val1, Val2... ) [,] ( Val3, Val4 ...) ...
    <p>The specified values are inserted into the table. The values may be any expressions ( possibly involving local variables or function calls ).
 
    <p>INSERT INTO schema.tablename ( Colname1, Colname2 ... ) select-expression
