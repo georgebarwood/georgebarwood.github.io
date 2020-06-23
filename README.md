@@ -1,6 +1,11 @@
 # georgebarwood.github.io
 
-<h1>Manual</h1><p>This manual describes the various SQL statements that are available. Where syntax is described, optional elements are enclosed in square brackets.<h2>Schema definition</h2><h3>CREATE SCHEMA</h2><p>CREATE SCHEMA name
+<h1>Manual</h1>
+<p>This manual describes the various SQL statements that are available. Where syntax is described, optional elements are enclosed in square brackets.
+<h2>Schema definition</h2>
+<h3>CREATE SCHEMA</h3>
+
+<p>CREATE SCHEMA name
    <p>Creates a new schema. Every database object (Table,View,Procedure,Function) has an associated schema. Schemas are used to organise database objects into logical categories.<h2>Table definition</h2><h3>CREATE TABLE</h2><p>CREATE TABLE schema.tablename ( Colname1 Coltype1, Colname2 Coltype2, ... )<p>Creates a new base table. Every base table is automatically given an Id column, which auto-increments on INSERT ( if no explicit value is supplied).<p>The data types are as follows:
 <ul>
 <li>tinyint, smallint, int, bigint : signed integers of size 1, 2, 4 and 8 bytes respectively.
