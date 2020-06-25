@@ -121,8 +121,8 @@
 <h3>Conversions</h3>
 <p>Any type will implicitly convert to string where required. Integers will convert to float and decimal numbers, and float and decimal will convert to each other as required. ToDo: what about conversions to integer? Truncation vs Rounding etc.
 
-<h2>Views</h2><
-h3>CREATE VIEW</h3>
+<h2>Views</h2>
+<h3>CREATE VIEW</h3>
 <p>CREATE VIEW schema.viewname AS SELECT expressions FROM table [WHERE bool-exp ] [GROUP BY expressions]<p>Creates a new view. Every expression must have a unique name.
 
 <h2>Indexes
