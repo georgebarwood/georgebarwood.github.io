@@ -174,3 +174,4 @@ Aggregate functions cannot be arguments.
 <h3>htm</h3>
 <p>Has functions related to encoding html.
 <h3>browse</h3><p>Has tables and functions for displaying, editing arbitrary tables in the database.
+<h3>date</h3><p>Has functions for manipulating dates - conversions between Days ( from year 0 ), Year-Day, Year-Month-Day and string.
