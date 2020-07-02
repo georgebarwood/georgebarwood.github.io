@@ -78,7 +78,13 @@
 <p>A stored procedure is created, which can later be called by an EXEC statement.
 <h3>EXEC</h3><p>EXEC schema.name( exp1, exp2 ... )
 <p>The stored procedure is called with the supplied parameters.
+
 <h3>Exceptions</h3><p>An exception will terminate the execution of a procedure or EXECUTE batch. EXCEPTION() can be used to obtain a string describing the most recent exception (and clears the exception string). If any exception occurs, the database is left unchanged.
+
+<h3>THROW</h3>
+<p>THROW string-expression 
+<p>An exception is raised, with the error message being set to the string.
+
 <h3>CREATE FUNCTION</h3><p>CREATE FUNCTION schema.name ( param1 type1, param2 type2... ) RETURNS type AS BEGIN statements END
 <p>A stored function is created which can later be used in expressions.
 <h3>RETURN</h3>
@@ -107,7 +113,7 @@
 <p>Brackets can be used where necessary, for example ( a + b ) * c.
 <h3>Pre-defined functions</h3>
 <ul>
-<li>MIN,MAX,SUM,COUNT : these are used in conjunction with GROUP BY to calculate the associated aggregate values. Only aggregates can appear in the SELECT expressions when GROUP BY is used, and if any aggregate function is used, all the expressions must be aggregates. The GROUP BY expressions are included in the result table ( and may be given names using AS ).</li>
+<li>MIN,MAX,SUM,COUNT : these are used in conjunction with GROUP BY to calculate an aggregate value. If the value of an expression in the SELECT list varies over the grouping, but no aggregate function is specified, the result will be computed from the first input row, prior to grouping - this is probably not useful, but is not an error.</li>
 <li>LEN( s string ) : returns the length of s, which must be a string or binary expression.</li>
 <li>SUBSTRING( s string, start int, len int ) : returns the substring of s from start (1-based) length len.</li>
 <li>REPLACE( s string, pat string, sub string ) : returns a copy of s where every occurrence of pat is replaced with sub.</li>
@@ -146,8 +152,7 @@
 
 <p>Every table automatically gets an integer Id field ( it does not have to be specified ), which is automatically filled in if not specified in an INSERT statement. Id values must be unique ( an attempt to insert or assign a duplicate Id will raise an exception ). 
 
-<p>In an aggregate select, only aggregate functions are allowed as expressions, and GROUP BY expressions are added as columns automatically.
-Aggregate functions cannot be arguments. 
+<p>WHERE condition is not optional in UPDATE and DELETE statements - WHERE true can be used if you really want to UPDATE or DELETE all rows. This is a "safety" feature.
 
 <p>PROCEDURE parameters are in brackets, the procedure body must be enclosed by BEGIN ... END.
 
